@@ -11,7 +11,7 @@ api_key = os.getenv("API_KEY")
 def create_url(movie_id) -> str:
     return (
         f"https://api.themoviedb.org/3/movie/{movie_id}?"
-        + f"append_to_response={"%2C".join(append_to_response)}&"
+        + f"append_to_response={",".join(append_to_response)}&"
         + f"language={language}"
     )
 
