@@ -1,4 +1,6 @@
 import requests
+import csv
+import json
 from dotenv import load_dotenv
 import os
 from time import sleep
@@ -64,5 +66,11 @@ print(f"Finished scraping {len(movies)} movies\n")
 
 # save to csv
 df_movies = pd.DataFrame(movies)
-df_movies.to_csv("movies.csv", index=False)
+
+# Convert nested structures to JSON strings
+df_movies = df_movies.applymap(
+    lambda x: json.dumps(x) if isinstance(x, (dict, list)) else x
+)
+
+df_movies.to_csv("movies.csv", index=False, quoting=csv.QUOTE_ALL)
 print(f"Saved movies to movies.csv (total: {df_movies.shape[0]})")
