@@ -50,4 +50,4 @@ print(f"Finished scraping {len(movie_details)} movies\n")
 # save to csv
 df_movies = pd.DataFrame(movie_details)
 df_movies.to_csv("movies_details.csv", index=False)
-print(f"Saved movie details to movies.csv (total: {df_movies.shape[0]})")
+print(f"Saved movie details to movie_details.csv (total: {df_movies.shape[0]})")
